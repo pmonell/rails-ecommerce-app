@@ -26,3 +26,6 @@ end
 group :test do
   gem 'rspec-rails'
 end
+
+# for respond_to syntax moved to gem since rails > 4.2
+gem 'responders'
