@@ -25,6 +25,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 # for respond_to syntax moved to gem since rails > 4.2
