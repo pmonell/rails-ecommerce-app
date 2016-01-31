@@ -1,9 +1,17 @@
 class Api::V1::CustomersController < ApplicationController
   respond_to :json
   
+  def show
+    customer = Customer.find(params[:id])
+    
+    render :json => customer,
+    serializer: Api::V1::CustomerSerializer,
+    root: 'customer'
+  end
+
   def index
-    @customers = Customer.all
-    render :json => @customers,
+    customers = Customer.all
+    render :json => customers,
     each_serializer: Api::V1::Customers::IndexSerializer,
     root: 'customers'
   end
@@ -27,9 +35,9 @@ class Api::V1::CustomersController < ApplicationController
     HEAD 201
   end
 
-  private
+private
     
-    def customer_params
-      params.require(:customer).permit(:email, :first_name, :last_name)
-    end
+  def customer_params
+    params.require(:customer).permit(:email, :first_name, :last_name)
+  end
 end
