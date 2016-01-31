@@ -3,11 +3,10 @@ class Api::V1::OrdersController < ApplicationController
 
   def show
     order = Order.find(params[:id])
-    order_items = order.order_items.all
 
-    render :json => order_items,
-    each_serializer: Api::V1::OrderItemSerializer,
-    root: 'order'
+    render :json => order,
+    serializer: Api::V1::OrderSerializer,
+    root: false
   end
 
 private
