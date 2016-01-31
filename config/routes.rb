@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      get 'customer/index', :to => 'customer#index'
+      resources :customers, only: [:index, :show, :create]
     end
   end
 
