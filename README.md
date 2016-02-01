@@ -23,6 +23,7 @@ bundle install
 ```
 rake db:create
 rake db:migrate
+rake db:seed
 ```
 * Time to see if rails is working
 ```
@@ -37,8 +38,8 @@ bundle exec rspec
 
 ### API Routes
 ##### GET  /api/v1/customers/:customer_id/orders
-Returns a collection of order history from a specific customer
-Parameters
+Returns a collection of order history from a specific customer\n
+Parameters\n
 customer_id - required
 
 ##### GET  /api/v1/customers/:customer_id/orders/:id
