@@ -23,8 +23,7 @@ class Api::V1::CustomersController < ApplicationController
       serializer: Api::V1::Customers::IndexSerializer,
       root: 'customer'
     else
-      render :json => customer.errors,
-      root: 'errors',
+      render :json => { errors: customer.errors },
       status: 422
     end
   end

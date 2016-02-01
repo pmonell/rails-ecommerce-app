@@ -10,12 +10,10 @@ RSpec.describe Api::V1::CustomersController, type: :controller do
     end
     
     it "returns json of users containing customers key" do
-      json_response = JSON.parse(response.body, symbolize_names: true)
       expect(json_response).to have_key(:customers)
     end
 
     it "returns json of users containing all users and their attributes" do
-      json_response = JSON.parse(response.body, symbolize_names: true)
       expect(json_response[:customers].length).to eql 2
     end
   end
@@ -29,7 +27,6 @@ RSpec.describe Api::V1::CustomersController, type: :controller do
       end
 
       it "returns customer that was just created" do
-        json_response = JSON.parse(response.body, symbolize_names: true)
         expect(json_response[:customer][:first_name]).to eql @customer_attributes[:first_name]
       end
     end
@@ -41,7 +38,6 @@ RSpec.describe Api::V1::CustomersController, type: :controller do
       end
 
       it "returns errors json" do
-        json_response = JSON.parse(response.body, symbolize_name: true)
         expect(json_response).to have_key(:errors)
       end
     end

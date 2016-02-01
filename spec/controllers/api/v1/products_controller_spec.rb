@@ -9,7 +9,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
     end
 
     it "returns json with matching product" do
-      expect(json_response[:product][:name]).to eq(@product.name)
+      expect(json_response[:name]).to eq(@product.name)
     end
   end
   
@@ -20,11 +20,11 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
     end
 
     it "returns json with product key" do
-      expect(json_response).to have_key(:product)
+      expect(json_response).to have_key(:products)
     end
 
     it "returns 5 product records" do
-      expect(json_response[:product].length).to eq(5)
+      expect(json_response[:products].length).to eq(5)
     end
   end
 end

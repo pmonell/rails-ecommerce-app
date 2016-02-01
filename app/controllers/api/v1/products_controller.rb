@@ -1,6 +1,14 @@
 class Api::V1::ProductsController < ApplicationController
   respond_to :json
-
+  
+  ##
+  #  Returns a single product's details
+  #
+  #  GET /api/v1/products/:id
+  #
+  #  params:
+  #    id - product id
+  
   def show
     product = Product.find(params[:id])
     render :json => product,
