@@ -27,7 +27,7 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   def create
-    customer = Customer.find(params[:user_id])
+    customer = Customer.find(params[:customer_id])
     order = customer.orders.build
     order.build_order_items_with_product_ids_and_quantities(params[:order][:product_ids_and_quantities])
     if order.save
