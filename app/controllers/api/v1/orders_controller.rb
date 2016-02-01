@@ -1,12 +1,26 @@
 class Api::V1::OrdersController < ApplicationController
   respond_to :json
+  
+  def index
+    customer = Customer.find(params[:customer_id])
+    orders = customer.orders
+
+    render :json => orders,
+    each_serializer: Api::V1::OrderSerializer,
+    root: 'orders'
+  end
 
   def show
     order = Order.find(params[:id])
-
-    render :json => order,
-    serializer: Api::V1::OrderSerializer,
-    root: false
+    
+    if order
+      render :json => order,
+      serializer: Api::V1::OrderSerializer,
+      root: 'order'
+    else
+      render :json => { errors: "No order found" },
+      status: 422
+    end
   end
 
   def create
@@ -18,7 +32,7 @@ class Api::V1::OrdersController < ApplicationController
       serializer: Api::V1::OrderSerializer,
       root: false
     else
-      render :json => order.errors,
+      render :json => { errors: order.errors },
       status: 422
     end
   end
