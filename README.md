@@ -38,45 +38,66 @@ bundle exec rspec
 
 ### API Routes
 ##### GET  /api/v1/customers/:customer_id/orders
-Returns a collection of order history from a specific customer\n
-Parameters\n
+Returns a collection of order history from a specific customer
+
+__Parameters__
+
 customer_id - required
 
 ##### GET  /api/v1/customers/:customer_id/orders/:id
 Returns a single order made by a specific customer
-Parameters
+
+__Parameters__
+
 customer_id - required
+
 id - required
 
 ##### POST /api/v1/customers/:customer_id/orders
 Creates an order for a customer. Returns order details and items
-Parameters
+
+__Parameters__
+
 customer_id - required
+
 order - required
-  product_ids_and_quantities - required 
-  #format [[product_1.id, quantity],[product_2.id, quantity]]
+  
+**product_ids_and_quantities - required 
+  
+**#format [[product_1.id, quantity],[product_2.id, quantity]]
 
 ##### GET  /api/v1/customers
 Returns a collection of all customers
-Parameters
+
+__Parameters__
+
 None
 
 ##### POST /api/v1/customers
 Creates a customer. Returns customer or errors
-Parameters
+
+__Parameters__
+
 email - required
+
 first_name - optional
+
 last_name - optional
 
 ##### GET  /api/v1/customers/:id
 Returns a single customer
-Parameters
+
+__Parameters__
+
 id - required
 
 ##### GET  /api/v1/products
 Returns a collection of all products
-Parameters
+
+__Parameters__
+
 keywords - optional
+
 below_price - optional
 
 ##### POST /api/v1/products
