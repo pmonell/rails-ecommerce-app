@@ -1,28 +1,19 @@
-== README
+# Little Ecommerce App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Versions
+Ruby version = 2.2.x
+Rails version = 4.2.2
 
-Things you may want to cover:
+### Installation
+To install this app:
+1. clone this repo - 
+2. navigate to project root
+3. bundle install to resolve dependencies
+4. rake db:migrate - may have to configure database.yml to include your database credentials or optionally use a different database by switching up the Gemfile
+5. test and see if the server will start - rails server
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### Tests
+Run the test suite by executing rspec with bundler exec in the project root
+```
+bundle exec rspec
+```
