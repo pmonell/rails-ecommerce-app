@@ -1,9 +1,8 @@
 # Little Ecommerce App
 
-### Versions
-Ruby version = 2.2.x
+### Version
 
-Rails version = 4.2.2
+Rails = 4.2.2
 
 ### Installation
 To install this app:
