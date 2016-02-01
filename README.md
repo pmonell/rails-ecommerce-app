@@ -6,6 +6,7 @@ Rails version = 4.2.2
 
 ### Installation
 To install this app:
+
 1. clone this repo - 
 2. navigate to project root
 3. bundle install to resolve dependencies
