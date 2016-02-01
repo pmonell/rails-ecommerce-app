@@ -17,6 +17,10 @@ class Product < ActiveRecord::Base
     self.product_inventory.decrement!(:stock, quantity)
   end
 
+  def quantity
+    self.product_inventory[:stock]
+  end
+
   def self.search(params = {})
     products = Product.all
 
@@ -26,9 +30,7 @@ class Product < ActiveRecord::Base
     products
   end
 
-  private
-
-    def set_initial_inventory
-      build_product_inventory(stock: stock)
-    end
+  def set_initial_inventory
+    build_product_inventory(stock: stock)
+  end
 end

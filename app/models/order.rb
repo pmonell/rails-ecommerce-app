@@ -4,11 +4,10 @@ class Order < ActiveRecord::Base
   has_many :products, through: :order_items
 
   before_create :set_order_status
-  before_save :update_price
-
-  def subtotal
-    order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
-  end
+  before_validation :set_total!
+  
+  validates :customer_id, presence: true
+  validates_with EnoughInventoryValidator
 
   def build_order_items_with_product_ids_and_quantities(product_ids_and_quantities)
     product_ids_and_quantities.each do |product_id_and_quantity|
@@ -17,13 +16,20 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def paid_for_order!
+    self[:status] = "paid"
+  end
+
+  def set_total!
+    self.price = 0
+    order_items.each do |order_item|
+      self.price += order_item.quantity * order_item.unit_price
+    end
+  end
+
   private
 
     def set_order_status
       self[:status] = "pending"
-    end
-
-    def update_price
-      self[:price] = subtotal
     end
 end

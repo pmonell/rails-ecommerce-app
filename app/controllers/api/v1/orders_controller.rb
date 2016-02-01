@@ -2,9 +2,12 @@ class Api::V1::OrdersController < ApplicationController
   respond_to :json
   
   def index
-    customer = Customer.find(params[:customer_id])
-    orders = customer.orders
-
+    if params[:customer_id]
+      customer = Customer.find(params[:customer_id])
+      orders = customer.orders
+    else
+      orders = Order.all
+    end
     render :json => orders,
     each_serializer: Api::V1::OrderSerializer,
     root: 'orders'

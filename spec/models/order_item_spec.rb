@@ -7,7 +7,6 @@ RSpec.describe OrderItem, type: :model do
       order_item = FactoryGirl.build :order_item
       order.order_items << order_item
       order_item[:quantity] = 1
-      order_item.save
       expect(order_item.total_price).to eq(1 * order_item.unit_price)
     end
   end
