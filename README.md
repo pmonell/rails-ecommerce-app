@@ -80,23 +80,34 @@ below_price - optional
 
 ##### POST /api/v1/products
 Creates a product. Returns created product or errors
-Parameters
+
+__Parameters__
+
 name - required
+
 stock - required
+
 unit_price - required
+
 description - optional
 
 ##### GET  /api/v1/products/:id
 Returns a single product
-Parameters
+
+__Parameters__
+
 id - required
 
 ##### GET  /api/v1/orders
 Returns a collection of orders
-Parameters
+
+__Parameters__
+
 None
 
 ##### GET  /api/v1/orders/:id
 Returns a single order
-Parameters
+
+__Parameters__
+
 id - required
