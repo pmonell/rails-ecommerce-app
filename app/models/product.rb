@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  attr_accessor :stock
+  
   has_one :product_inventory
   has_many :order_items
 
@@ -6,17 +8,27 @@ class Product < ActiveRecord::Base
   validates :unit_price, numericality: { greater_than_or_equal_to: 0.0 }, presence: true
   validates_associated :product_inventory, :on => :create
 
-  attr_accessor :stock
-  
-  before_create :set_inventory
+  before_create :set_initial_inventory
+
+  scope :filter_by_name, lambda { |keyword| where("lower(name) LIKE ?", "%#{keyword}%") }
+  scope :below_price, lambda { |price| where("unit_price < ?", price) } 
 
   def decrement_inventory!(quantity)
-    self.product_inventory.decrement!(:quantity, quantity)
+    self.product_inventory.decrement!(:stock, quantity)
+  end
+
+  def self.search(params = {})
+    products = Product.all
+
+    products = products.filter_by_name(params[:keywords]) if params[:keywords]
+    products = products.below_price(params[:below_price]) if params[:below_price]
+
+    products
   end
 
   private
 
-  def set_inventory
-    build_product_inventory(stock: stock)
-  end
+    def set_initial_inventory
+      build_product_inventory(stock: stock)
+    end
 end
