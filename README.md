@@ -2,16 +2,33 @@
 
 ### Versions
 Ruby version = 2.2.x
+
 Rails version = 4.2.2
 
 ### Installation
 To install this app:
 
-1. clone this repo - 
-2. navigate to project root
-3. bundle install to resolve dependencies
-4. rake db:migrate - may have to configure database.yml to include your database credentials or optionally use a different database by switching up the Gemfile
-5. test and see if the server will start - rails server
+1. Clone this repository
+```
+git clone https://github.com/pmonell/rails-ecommerce-app.git
+```
+2. Navigate to project root
+```
+cd rails-ecommerce-app
+```
+3. Install dependencies using bundler
+```
+bundle install
+```
+4. This app uses pg gem and postgres database. If you have both of these installed, please update the database.yml file with your database credentials. Then initialize the database.
+```
+rake db:create
+rake db:migrate
+```
+5. Time to see if rails is working
+```
+rails server
+```
 
 ### Tests
 Run the test suite by executing rspec with bundler exec in the project root
